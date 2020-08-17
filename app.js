@@ -117,26 +117,6 @@ const humanData = function() {
         human.inches = document.getElementById('inches').value;
         human.fact = [getHeightDif(), getWeightDif(), getDiet()];
 
-        // compare methods
-        function getWeightDif() {
-            if (human.weight < anklyosaurus.weight);
-            return `The Anklyosaurus weighs ${anklyosaurus.weight - human.weight}lbs more than you!`;
-        };
-        getWeightDif();
-
-        function getDiet() {
-            if (human.diet === pteranodon.diet);
-            return `You have the same diet as a Pteranodon!`;
-        };
-        getDiet();
-
-        function getHeightDif() {
-            const humanInches = parseInt(human.feet * 12) + parseInt(human.inches);
-            if (humanInches > anklyosaurus.height);
-            return `You are taller than an Anklyosaurus`;
-        };
-        getHeightDif();
-
         //add objects to an array 
         creatureArray.push(
             triceratops,
@@ -152,6 +132,28 @@ const humanData = function() {
 };
 //empty array for Animal objects
 const creatureArray = [];
+
+// compare methods
+function getWeightDif() {
+    if (human.weight < anklyosaurus.weight);
+    return `The Anklyosaurus weighs ${anklyosaurus.weight - human.weight}lbs more than you!`;
+};
+
+function getDiet() {
+    if (human.diet === pteranodon.diet || tyrannosaurus.diet || elasmosaurus.diet) {
+        return `You have the same diet as a Pteranodon, Tyrannosaurus Rex and an Elasmosaurus!`;
+    } else if (human.diet === triceratops.diet || brachiosaurus.diet || stegosaurus.diet || pigeon.diet) {
+        return `You like your veggies like the Triceratops, Brachiosaurus, Stegosaurus, and Pigeon!`;
+    } else {
+        return `You like to mix up your diet!`
+    }
+};
+
+function getHeightDif() {
+    const humanInches = parseInt(human.feet * 12) + parseInt(human.inches);
+    if (humanInches > anklyosaurus.height);
+    return `You are taller than an Anklyosaurus`;
+};
 
 // Generate Tiles for each Dino in Array
 function createTile() {
@@ -171,7 +173,7 @@ function createTile() {
         tileTitle.innerHTML = creatureArray[i].species;
         tileImg.setAttribute('src', creatureArray[i].image);
         tileFact.innerHTML = creatureArray[i].getRandom();
-       
+
     }
 };
 
