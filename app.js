@@ -17,7 +17,6 @@ function Animal(species, weight, height, diet, where, when, fact, image) {
 //display random facts
 Animal.prototype.getRandom = function() {
     return this.fact[Math.floor(Math.random() * this.fact.length)];
-    this.fact.splice(index, 4);
 };
 
 // Create Dino Objects
@@ -103,7 +102,7 @@ const pigeon = new Animal(
 );
 
 // Create Human Object
-const human = new Animal(this.image, this.species, this.fact);
+let human = new Animal();
 
 const humanData = () => {
     // Use IIFE to get human data from form
