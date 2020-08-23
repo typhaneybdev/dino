@@ -5,7 +5,6 @@
            const dino = await fetch("dino.json") // retieve dino objects from json 
                .then(result => result.json())
                .then(result => result.Dinos);
-           console.log(dino);
 
            //grid vairables
            const grid = document.getElementById('grid');
@@ -49,8 +48,6 @@
                    human.feet = document.getElementById('feet').value;
                    human.inches = document.getElementById('inches').value;
                    human.fact = [getWeight(), getDiet(), getHeightDif()];
-                   console.log(getHeightDif());
-
                })(human);
            };
 
@@ -81,7 +78,6 @@
 
                // add human to array
                const creatureArray = dino.splice(4, 0, human);
-               console.log(creatureArray);
                //loop though array to dynamically add card data
                for (let i = 0; i < dino.length; i++) {
                    const newTile = document.createElement('div');
