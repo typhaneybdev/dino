@@ -1,3 +1,12 @@
+
+## Run this project locally
+This project is utilizing fetch to access json data and will need a local server. 
+
+You can use http-server, by installing npm install http-server -g https://www.npmjs.com/package/http-server
+
+cd to project directory and run the http-server command, this will provide a local host IP you may view in browser.
+
+
 # Object Oriented Javascript 
 
 ## Student Instructions
