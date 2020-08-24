@@ -1,0 +1,23 @@
+{
+  "name": "dino",
+  "version": "1.0.0",
+  "description": "This project is utilizing fetch to access json data and will need a local server.",
+  "main": "app.js",
+  "dependencies": {
+    "http-server": "^0.12.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typhaneybdev/dino.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/typhaneybdev/dino/issues"
+  },
+  "homepage": "https://github.com/typhaneybdev/dino#readme"
+}

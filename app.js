@@ -112,7 +112,6 @@
    //On button click, prepare and display infographic
    const compareMe = document.getElementById('btn');
    compareMe.addEventListener('click', function(e) {
-       // humanData(); //get human data
        toggleForm(); //remove form
        createDinoGraph(); // Add tiles to DOM
 
