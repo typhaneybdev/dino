@@ -1,6 +1,6 @@
 //grid vairables
 const grid = document.getElementById('grid');
-const gridItem = document.querySelector('.grid-item')
+const gridItem = document.querySelector('.grid-item');
 
 // Create (Dino)Animal) Constructor
 function Animal(species, weight, height, diet, where, when, fact, image) {
@@ -21,7 +21,6 @@ const createDinoGraph = () => { //create dinographic
         const dino = await fetch("dino.json") // retieve dino objects from json 
             .then(result => result.json())
             .then(result => result.Dinos);
-        console.log(dino);
 
         // Create Dino Objects
         const dinosaur = dino.map(dinosaur => new Animal(
@@ -81,10 +80,11 @@ const createDinoGraph = () => { //create dinographic
                 //compare methods
                 const dinoObj = dinosaur[i];
                 const getWeight = () => {
-                    if (human.weight < dinoObj.weight);
-                    console.log(dinoObj.weight);
-                    return `The ${dinoObj.species} weighs ${dinoObj.weight - human.weight} lbs more than ${human.species}!`;
-
+                    if (human.weight < dinoObj.weight) {
+                        return `The ${dinoObj.species} weighs ${dinoObj.weight - human.weight} lbs more than ${human.species}!`;
+                    } else if (dinoObj.weight < human.weight) {
+                        return `The ${dinoObj.species} weighs ${human.weight - dinoObj.weight} lbs less than ${human.species}!`;
+                    }
                 };
 
                 const getDiet = () => {
@@ -99,8 +99,11 @@ const createDinoGraph = () => { //create dinographic
 
                 const getHeightDif = () => {
                     const humanInches = parseInt(human.feet * 12) + parseInt(human.inches);
-                    if (humanInches < dinoObj.height);
-                    return `${human.species} and ${dinoObj.species} have a ${dinoObj.height - humanInches} inch height difference!`;
+                    if (humanInches < dinoObj.height) {
+                        return `${human.species} is ${dinoObj.height - humanInches} inches shorter than ${dinoObj.species}!`;
+                    } else if (dinoObj.height < humanInches) {
+                        return `${human.species} is ${humanInches - dinoObj.height} inches taller than ${dinoObj.species}!`;
+                    }
                 };
 
                 if (typeof dinosaur[i].fact === 'string') {
@@ -128,4 +131,4 @@ const compareMe = document.getElementById('btn');
 compareMe.addEventListener('click', function(e) {
     toggleForm(); //remove form
     createDinoGraph(); // Add tiles to DOM
-})
+});
