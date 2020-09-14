@@ -2,8 +2,18 @@
 const grid = document.getElementById('grid');
 const gridItem = document.querySelector('.grid-item');
 
-// Create (Dino)Animal) Constructor
-function Animal(species, weight, height, diet, where, when, fact, image) {
+// Create super (Animal) Constructor
+function Animal(species, weight, height, diet, image) {
+    this.species = species;
+    this.weight = weight;
+    this.height = height;
+    this.diet = diet;
+    this.image = image;
+}
+
+//create Dino class to extebd Animal 
+function Dino(species, weight, height, diet, where, when, fact, image) {
+    Animal.call(this, species, weight, height, when, diet, image)
     this.species = species;
     this.weight = weight;
     this.height = height;
@@ -11,6 +21,17 @@ function Animal(species, weight, height, diet, where, when, fact, image) {
     this.where = where;
     this.when = when;
     this.fact = fact;
+    this.image = image;
+}
+
+// create Human clss to extend Animal
+function Human(species, weight, feet, inches, diet, image) {
+    Animal.call(this, species, weight, diet, image)
+    this.species = species;
+    this.weight = weight;
+    this.height = feet;
+    this.where = inches;
+    this.diet = diet;
     this.image = image;
 }
 
@@ -23,7 +44,7 @@ const createDinoGraph = () => { //create dinographic
             .then(result => result.Dinos);
 
         // Create Dino Objects
-        const dinosaur = dino.map(dinosaur => new Animal(
+        const dinosaur = dino.map(dinosaur => new Dino(
             dinosaur.species,
             dinosaur.weight,
             dinosaur.height,
@@ -34,12 +55,12 @@ const createDinoGraph = () => { //create dinographic
             dinosaur.image));
 
         // randdom facts
-        Animal.prototype.getRandom = function() {
+        Dino.prototype.getRandom = function() {
             return this.fact[Math.floor(Math.random() * this.fact.length)];
         };
 
         // Create human Object
-        const human = new Animal();
+        const human = new Human();
         const humanData = () => {
             // Use IIFE to get human data from form
             //source:https://www.youtube.com/watch?v=NxVCq4p0Kb0
@@ -110,7 +131,7 @@ const createDinoGraph = () => { //create dinographic
                     tileFact.innerHTML = "";
                 } else {
                     dinosaur[i].fact.push(getWeight(), getDiet(), getHeightDif());
-                    dinosaur[8].fact.splice(1, 3);
+                    dinosaur[8].fact.splice(1, 3); //remove random pigeon facts
                     tileFact.innerHTML = dinosaur[i].getRandom();
                 }
             }
